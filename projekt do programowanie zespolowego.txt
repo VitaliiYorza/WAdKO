@@ -21,9 +21,7 @@ Celem projektu jest dostarczenie użytkownikom prostego narzędzia do rozpoznawa
 Projekt można rozwijać, dodając możliwość trenowania własnych modeli na specyficzne kategorie, poprawiając dokładność klasyfikacji, i tworząc wersję mobilną aplikacji dla wygody użytkowników.
 
 
-
-
-Plan
+Plan na 17.10 (Kamil+Vit)
 1.	Tworzenie modeli i ich przetestowanie + znalezenie datasety
 2.	Usprawnienie modeli
 3.	Pobrania i przesłanie obrazków oraz wyników do modeli i strony
