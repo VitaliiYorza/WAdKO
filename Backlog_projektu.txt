@@ -1,0 +1,9 @@
+Spotkanie 11.10.2023 (Rafał, Vit, Kamil)
+1. Omówienie zarysu projektu
+2. Rozdysponowanie ról do projektu
+3. Stworzenie planu + github
+
+Spotkanie 17.10 (Kamil+Vit)
+1.	Tworzenie modeli i ich przetestowanie + znalezenie datasety
+2.	Export modelu na gdrive
+3.	Pobrania i przesłanie obrazków oraz wyników do modeli i strony
