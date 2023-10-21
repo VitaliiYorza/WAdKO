@@ -1,0 +1,19 @@
+
+<div class="container">
+    <button class="btn" (click)="goHome()">Go back to Home</button>
+
+    <div *ngIf="currentImageScan">
+        <div class="row">
+
+            <img id="chosen-image" [src]="selectedFileDataUrl" *ngIf="selectedFileDataUrl" alt="Selected Image">
+    
+        </div>
+    
+        <div class="row">
+            <div *ngIf="result as boolean">
+                <h1 *ngIf="result">Your image is {{identificationItemType}}</h1>
+                <h1 *ngIf="!result">Your image is not {{identificationItemType}}</h1>
+            </div>
+        </div>
+    </div>
+</div>

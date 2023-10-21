@@ -1,0 +1,32 @@
+
+
+  .container {
+    background-color: #d47800e0;
+    border-radius: 4px;
+    padding-top: 20px;
+
+    .photo-container {
+      margin-top: 50px;
+
+      .btn {
+        padding: 5px;
+        margin: 10px;
+      }
+
+      // .btn-primary {
+
+      // }
+
+      .btn:hover{
+        background-color: gray;
+      }
+
+      .history {
+        background-color: lightgreen;
+      }
+
+      .scan {
+        background-color: #df4747;
+      }
+    }
+  }

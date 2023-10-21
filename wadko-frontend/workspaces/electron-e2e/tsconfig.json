@@ -1,0 +1,17 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"moduleResolution": "node",
+		"module": "ESNext",
+		"target": "ES2022",
+		"noEmit": true,
+		"types": [
+			"node",
+			"@wdio/globals/types",
+			"expect-webdriverio",
+			"@wdio/jasmine-framework"
+		]
+	},
+	"include": ["./**/*.ts"]
+}

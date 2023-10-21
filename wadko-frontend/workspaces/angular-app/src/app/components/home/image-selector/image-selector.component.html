@@ -1,0 +1,39 @@
+
+<!-- <h1 id="title">OnlyPics</h1> -->
+
+    <div class="container">
+        <div class="row">
+            <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" id="image" class="form-control" formControlName="image">
+                    <button type="button" (click)="onSelectPhoto()" class="btn">Select Photo</button>
+                    <img id="chosen-image" [src]="selectedFileDataUrl" *ngIf="selectedFileDataUrl" alt="Selected Image">
+                </div>
+                <div class="form-group">
+                    <label>Chose identification item type</label>
+                    <select
+                            id="identificationItemType"
+                            class="form-control"
+                            formControlName="identificationItemType"
+                            required
+                    >
+                        <option>
+                            Pies
+                        </option>
+                        <option>
+                            Kot
+                        </option>
+                        <option>
+                            Liczba
+                        </option>
+                    </select>
+                </div>
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!selectedFileDataUrl"
+                    >Submit
+                </button>
+            </form>
+        </div>
+    </div>

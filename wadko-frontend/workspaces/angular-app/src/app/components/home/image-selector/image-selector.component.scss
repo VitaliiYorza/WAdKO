@@ -1,0 +1,22 @@
+
+  
+    .container {
+      background-color: #d47800e0;
+      border-radius: 4px;
+      padding: 20px;
+  
+      .photo-container {
+        margin-top: 50px;
+  
+      }
+
+      #image {
+        visibility: hidden;
+      }
+
+      #chosen-image {
+        max-width: 150px;
+        max-height: 100px;
+      }
+    }
+  
