@@ -36,7 +36,6 @@ export class ImageSelectorComponent implements OnInit {
       .then(response => {
         this.selectedFileDataUrl = response;
         this.imageForm.value['image'] = response;
-        // this.imageForm.controls['image'].enable({onlySelf: true});
       })
   }
 
@@ -45,19 +44,17 @@ export class ImageSelectorComponent implements OnInit {
     let imageToSend: ImageScanModel = {
       imageBase64URL: val['image'],
       imageItemType: val['identificationItemType'],
-      result: true
+      result: false
     };
     console.log(imageToSend);
-    this.imageService.setCurrentImageScan(imageToSend);
-    setTimeout(() => {
-      this.router.navigate(['/result'])
-    }, 2500)
-    // await this.electronIpcService.invoke<EmployeeModel, boolean>(WindowApiConst.EMP_MODEL_INPUT, this.emp)
-    //     .then(result => {
-    //       console.log(result);
-    //       if (result) {
-    //         this.router.navigate(['/home']);
-    //       }
-    //     });
+    this.imageService.scanImage(imageToSend).subscribe(
+      (response) => {
+        this.imageService.setCurrentImageScan(response);
+        this.router.navigate(['/result'])
+      },
+      (error) => {
+        console.error('API error', error);
+      }
+    );
   }
 }

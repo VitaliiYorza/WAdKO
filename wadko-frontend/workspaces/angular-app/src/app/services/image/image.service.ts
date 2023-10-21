@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import ImageScanModel from "shared-lib/.dist/models/image-scan-model";
@@ -9,7 +10,13 @@ export class ImageService {
   currentImageScan: Subject<ImageScanModel> = new Subject<ImageScanModel>();
   imageScan!: ImageScanModel;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  scanImage(imageToScan: ImageScanModel) {
+    let apiUrl = 'http://127.0.0.1:8081/scanImage';
+
+    return this.http.post<ImageScanModel>(apiUrl, imageToScan);
+  }
 
   setCurrentImageScan(newImageScan: ImageScanModel): void {
     this.currentImageScan.next(newImageScan);

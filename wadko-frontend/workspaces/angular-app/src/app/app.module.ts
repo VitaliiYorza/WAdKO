@@ -21,14 +21,6 @@ import { ResultPageComponent } from './components/home/result-page/result-page.c
 		AppRoutingModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-		// TranslateModule.forRoot({
-		// 	defaultLanguage: 'en',
-		// 	loader: {
-		// 		provide: TranslateLoader,
-		// 		useFactory: HttpLoaderFactory,
-		// 		deps: [HttpClient],
-		// 	},
-		// }),
 	],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -42,6 +42,7 @@ export class Window {
 				sandbox: global.appConfig.isSandbox,
 				// Use a preload script to enhance security
 				preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+				webSecurity: false,
 			},
 		});
 
