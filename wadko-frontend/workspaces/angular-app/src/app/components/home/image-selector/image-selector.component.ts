@@ -32,11 +32,8 @@ export class ImageSelectorComponent implements OnInit {
 
   onSelectPhoto() {
     console.log('button clicked');
-    this.electronIpcService.invoke<string, string>(WindowApiConst.IMG_SELECT_INPUT, "image-select")
-      .then(response => {
-        this.selectedFileDataUrl = response;
-        this.imageForm.value['image'] = response;
-      })
+    this.selectedFileDataUrl = "https://web.stanford.edu/~siegelr/galapagos/galapagos2010/IMG_8148%20tropicbird%20incoming%207-31-2010%20galapagos.jpg";
+    this.imageForm.value['image'] = "https://web.stanford.edu/~siegelr/galapagos/galapagos2010/IMG_8148%20tropicbird%20incoming%207-31-2010%20galapagos.jpg";
   }
 
   onSubmit() {

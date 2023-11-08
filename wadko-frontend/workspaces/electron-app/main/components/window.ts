@@ -6,7 +6,6 @@ import {Logger} from '../utils/logger';
 import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
 import EmployeeModel from "shared-lib/.dist/models/employee-model";
-import { ImageSelectService } from '../services/image-select-service';
 
 declare const global: Global;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -17,11 +16,7 @@ export class Window {
 	constructor() {
 		this.createWindow();
 		this.loadRenderer();
-		this.registerService<string, string>(new ImageSelectService(this._electronWindow));
-		// this.registerService<string, string>(new ChoseImageService(this._electronWindow));
-		// this.registerService<string, EmployeeModel>(new EmployeeSelectService(this._electronWindow));
-		// this.registerService<EmployeeModel, boolean>(new EmployeeSaveService(this._electronWindow));
-		// this.registerService<number, number[]>(new MultiplesService());
+		// this.registerService<string, string>(new ImageSelectService(this._electronWindow));
 	}
 
 	private createWindow(): void {

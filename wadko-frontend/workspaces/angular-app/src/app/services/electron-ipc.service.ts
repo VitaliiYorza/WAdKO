@@ -20,10 +20,7 @@ export class ElectronIpcService {
 		if (this._api) {
 			this._api.receive<Out>(channel, (output) => {
 				console.log(`Received from main process channel [${channel}]`, output);
-
-				// Next code might run outside of Angular zone and therefore Angular
-				// doesn't recognize it needs to run change detection
-				// Further details on SO : https://stackoverflow.com/a/49136353/11480016
+				
 				this.zone.run(() => {
 					callback(output);
 				});
