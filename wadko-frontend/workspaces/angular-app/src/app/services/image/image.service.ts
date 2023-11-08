@@ -7,19 +7,11 @@ import ImageScanModel from "shared-lib/.dist/models/image-scan-model";
   providedIn: 'root'
 })
 export class ImageService {
-  currentImageScan: Subject<ImageScanModel> = new Subject<ImageScanModel>();
+  // currentImageScan: Subject<ImageScanModel> = new Subject<ImageScanModel>();
   imageScan!: ImageScanModel;
 
-  constructor(private http: HttpClient) { }
-
-  scanImage(imageToScan: ImageScanModel) {
-    let apiUrl = 'http://127.0.0.1:8081/scanImage';
-
-    return this.http.post<ImageScanModel>(apiUrl, imageToScan);
-  }
-
   setCurrentImageScan(newImageScan: ImageScanModel): void {
-    this.currentImageScan.next(newImageScan);
+    // this.currentImageScan.next(newImageScan);
     this.imageScan = newImageScan;
   }
 
@@ -27,7 +19,7 @@ export class ImageService {
     return this.imageScan;
   }
 
-  getCurrentImageScanSub() {
-    return this.currentImageScan.asObservable();
-  }
+  // getCurrentImageScanSub() {
+  //   return this.currentImageScan.asObservable();
+  // }
 }

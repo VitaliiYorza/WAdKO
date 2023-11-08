@@ -44,17 +44,10 @@ export class ImageSelectorComponent implements OnInit {
     let imageToSend: ImageScanModel = {
       imageBase64URL: val['image'],
       imageItemType: val['identificationItemType'],
-      result: false
+      result: true
     };
     console.log(imageToSend);
-    this.imageService.scanImage(imageToSend).subscribe(
-      (response) => {
-        this.imageService.setCurrentImageScan(response);
-        this.router.navigate(['/result'])
-      },
-      (error) => {
-        console.error('API error', error);
-      }
-    );
+    this.imageService.setCurrentImageScan(imageToSend);
+    this.router.navigate(['/result']);
   }
 }
