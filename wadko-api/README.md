@@ -19,6 +19,8 @@ pip install Pillow
 
 pip install Flask-CORS
 
+pip install fastai
+
 
 # Startup
 
