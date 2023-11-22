@@ -8,7 +8,8 @@ def predict_image(image_path, model_path='export.pkl'):
     Parameters:
     - image_path (str): The path to the image file to be classified.
     - model_path (str, optional): The path to the pre-trained model file (export.pkl).
-                                 Defaults to 'export.pkl' in the current directory.
+    
+    Defaults to 'export.pkl' in the current directory.
 
     Returns:
     - str: The predicted class of the input image.
