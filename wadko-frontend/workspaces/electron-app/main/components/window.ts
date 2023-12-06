@@ -5,7 +5,6 @@ import {AbstractService} from '../services/abstract-service';
 import {Logger} from '../utils/logger';
 import IpcMainInvokeEvent = Electron.IpcMainInvokeEvent;
 import OpenDialogReturnValue = Electron.OpenDialogReturnValue;
-import EmployeeModel from "shared-lib/.dist/models/employee-model";
 import { ImageSelectService } from '../services/image-select-service';
 
 declare const global: Global;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import ImageScanModel from "shared-lib/.dist/models/image-scan-model";
+import ImageScanModel from "shared-lib/models/image-scan-model";
 
 @Injectable({
   providedIn: 'root'

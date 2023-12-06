@@ -1,4 +1,4 @@
-import { WindowApiConst } from "shared-lib/.dist/apis/window-api-consts";
+import { WindowApiConst } from "shared-lib/apis/window-api-consts";
 import { AbstractService } from "./abstract-service";
 import { BrowserWindow, app, dialog, nativeImage } from "electron";
 import * as fs from "fs";

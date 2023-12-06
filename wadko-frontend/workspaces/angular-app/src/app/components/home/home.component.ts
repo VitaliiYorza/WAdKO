@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {ElectronIpcService} from "../../services/electron-ipc.service";
-import EmployeeModel from "shared-lib/.dist/models/employee-model";
-import {WindowApiConst} from "shared-lib/.dist/apis/window-api-consts";
+import {WindowApiConst} from "shared-lib/apis/window-api-consts";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,6 @@ import {WindowApiConst} from "shared-lib/.dist/apis/window-api-consts";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  chosenEmp!: EmployeeModel;
 
   constructor(private router: Router) {
   }
