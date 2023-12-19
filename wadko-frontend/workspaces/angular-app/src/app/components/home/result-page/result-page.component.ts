@@ -13,6 +13,7 @@ export class ResultPageComponent implements OnInit {
   result: boolean | null = null;
   selectedFileDataUrl: string = '';
   identificationItemType: string = '';
+  isNumber: boolean = false;
 
   constructor(private imageService: ImageService,
     private router: Router) { }
@@ -24,10 +25,10 @@ export class ResultPageComponent implements OnInit {
       this.selectedFileDataUrl = this.currentImageScan.imageBase64URL;
       this.identificationItemType = this.currentImageScan.imageItemType;
     }
-    console.log(this.currentImageScan);
+    // console.log(this.currentImageScan);
     console.log(this.result);
-    console.log(this.selectedFileDataUrl);
-    console.log(this.identificationItemType);
+    // console.log(this.selectedFileDataUrl);
+    // console.log(this.identificationItemType);
   }
 
   goHome() {

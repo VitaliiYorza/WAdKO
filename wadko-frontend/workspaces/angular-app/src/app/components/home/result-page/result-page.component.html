@@ -10,8 +10,13 @@
         </div>
     
         <div class="row">
+            <span *ngIf="!isNumber">
                 <h1 *ngIf="result">Your image is {{identificationItemType}}</h1>
                 <h1 *ngIf="!result">Your image is not {{identificationItemType}}</h1>
+            </span>
+            <span *ngIf="isNumber">
+                <h1>Your image is {{result}}</h1>
+            </span>
         </div>
     </div>
 </div>

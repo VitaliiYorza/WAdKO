@@ -23,10 +23,11 @@ CORS(app, origins=["http://localhost:4200"])
 def process_data(soup, image):
 
     print("przeszło")
-    if soup == "Liczba":
+    if soup == "Number":
         return predict_digit(image)
-    else:
+    elif soup == "Cat":
         return predict_cat(image)
+    # TODO DOG
 
 def predict_cat(data):
     loaded_model = model_from_json(json.load(open(getPath('../wadko-ml-models/model_architecture.json'), 'r')))
@@ -91,12 +92,17 @@ def scan_image():
             image = Image.open(io.BytesIO(image_data))
             image.save('output.jpg', 'JPEG')
 
-            image_scan.result = process_data(image_scan.imageItemType, getPath('output.jpg'))
+            print(image_scan.imageItemType)
+            # image_scan.result = process_data(image_scan.imageItemType, getPath('output.jpg'))
+            if (image_scan.imageItemType == 'Cat' or image_scan.imageItemType == 'Dog'):
+                image_scan.result = True if process_data(image_scan.imageItemType, getPath('output.jpg')) == image_scan.imageItemType else False
+            else:
+                image_scan.result = process_data(image_scan.imageItemType, getPath('output.jpg'))
+
+
+            print(image_scan.result)
             # print(image_scan.result)
             # image.show()
-
-        # Set result if photo is valid or not
-        image_scan.result = False
 
         return image_scan.to_json(), 201
     except Exception as e:
