@@ -21,6 +21,12 @@ pip install Flask-CORS
 
 pip install fastai
 
+pip install opencv-python
+
+pip install keras
+
+pip install tensorflow
+
 
 # Startup
 
