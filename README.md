@@ -1,5 +1,10 @@
 # Wirtualny Asystent do Klasyfikacji Obrazów (WAdKO)
 
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/VitaliiYorza/WAdKO/blob/main/Kitek_Wadko.png"> 
+</p>
+
+
 Nasz projekt polega na stworzeniu wirtualnego asystenta, który może klasyfikować obrazy na podstawie ich zawartości. Będzie to przydatne narzędzie, które pomaga użytkownikom rozpoznawać przedmioty na zdjęciach.
 
 ## Funkcje Frontend:
