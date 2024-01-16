@@ -14,14 +14,21 @@ import numpy as np
 
 app = Flask(__name__)
 
-# set safe origins from which api can be obtained
+# Enable CORS for all routes
 CORS(app, origins=["http://localhost:4200"])
-# CORS(app)
 
-# connect with ML app here 
 
 def process_data(soup, image):
+    """
+       Process image data based on the specified category.
 
+    Args:
+        soup (str): Category of the image ('Number', 'Cat', etc.).
+        image (str): Path to the image file.
+
+    Returns:
+        str or int: Prediction result based on the category.
+    """
     print("przeszło")
     if soup == "Number":
         return predict_digit(image)
@@ -29,22 +36,21 @@ def process_data(soup, image):
         return predict_cat(image)
     # TODO DOG
 
+
 def predict_cat(data):
     loaded_model = model_from_json(json.load(open(getPath('../wadko-ml-models/model_architecture.json'), 'r')))
-
     model_export = load_learner(getPath('../wadko-ml-models/model_piekorz_1.pkl'))
-    
+
     img = PILImage.create(data)
     img = img.resize((150, 150))
 
-
     image_array = np.array(img)
-    image_array = image_array.reshape((1,) + image_array.shape)  # Adjust as needed
-    # pred = loaded_model.predict(image_array)
+    image_array = image_array.reshape((1,) + image_array.shape)
 
     pred, _, _ = model_export.predict(img)
     print(pred)
     return pred
+
 
 def predict_digit(data):
     loaded_model = model_from_json(json.load(open(getPath('../wadko-ml-models/model_architecture_digit.json'), 'r')))
@@ -62,7 +68,17 @@ def predict_digit(data):
     predicted_class = np.argmax(y_pred)
     return ("Prediction:", predicted_class)
 
+
 def decode_base64_image(data_uri):
+    """
+        Decode a Base64-encoded image.
+
+        Args:
+            data_uri (str): Base64-encoded image data.
+
+        Returns:
+            bytes: Decoded image data.
+    """
     # Remove the data URI prefix if it exists
     if data_uri.startswith('data:'):
         parts = data_uri.split(',')
@@ -70,21 +86,36 @@ def decode_base64_image(data_uri):
             return base64.b64decode(parts[1])
     return None
 
+
 def getPath(path):
+    """
+        Get the absolute path of the specified file.
+
+        Args:
+            path (str): Relative path of the file.
+
+        Returns:
+            str: Absolute path of the file.
+    """
     # Get the path of the current script
     current_script_path = os.path.abspath(__file__)
 
     # Join the script path with the filename 'output.jpg'
     return os.path.join(os.path.dirname(current_script_path), path)
 
+
 @app.route('/scanImage', methods=['POST'])
 @cross_origin(origins="localhost")
 def scan_image():
-    # print(request.get_json())
+    """
+        Endpoint to receive image data, process it, and return the prediction result.
+
+        Returns:
+            tuple: JSON response and HTTP status code.
+    """
     try:
         data = request.get_json()
         image_scan = ImageScanModel.from_json(data)
-        # print(image_scan)
 
         # Retrieve the Base64 encoded image and convert it to .jpg
         if image_scan.imageBase64URL:
@@ -93,21 +124,19 @@ def scan_image():
             image.save('output.jpg', 'JPEG')
 
             print(image_scan.imageItemType)
-            # image_scan.result = process_data(image_scan.imageItemType, getPath('output.jpg'))
             if (image_scan.imageItemType == 'Cat' or image_scan.imageItemType == 'Dog'):
-                image_scan.result = True if process_data(image_scan.imageItemType, getPath('output.jpg')) == image_scan.imageItemType else False
+                image_scan.result = True if process_data(image_scan.imageItemType,
+                                                         getPath('output.jpg')) == image_scan.imageItemType else False
             else:
                 image_scan.result = process_data(image_scan.imageItemType, getPath('output.jpg'))
 
-
             print(image_scan.result)
-            # print(image_scan.result)
-            # image.show()
 
         return image_scan.to_json(), 201
     except Exception as e:
         print(e)
         return jsonify({'error': str(e)}), 400
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081, debug=True)
